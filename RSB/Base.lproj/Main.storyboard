@@ -24,7 +24,8 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="NUD-8E-gzP" kind="presentation" id="vIG-DU-0vs"/>
+                                    <action selector="choosePaper" destination="vXZ-lx-hvc" eventType="touchUpInside" id="SpO-6z-Nhp"/>
+                                    <segue destination="NUD-8E-gzP" kind="presentation" identifier="makeChoiceHybridCodeSegue" id="vIG-DU-0vs"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eo-fl-OUh">

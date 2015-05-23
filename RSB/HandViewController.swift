@@ -10,10 +10,12 @@ import UIKit
 
 class HandViewController: UIViewController {
     var choice: String? // optional
+
     
-    func choosePaper(){
+    @IBAction func choosePaper(){
         println("paper")
         choice = "Paper"
+        makeChoiceHybridCodeSegue()
     }
     @IBAction func chooseRock(){
         //code only transition from VC to VC
@@ -47,9 +49,20 @@ class HandViewController: UIViewController {
         
         presentViewController(controller, animated: true, completion: nil) //presentViewController key way to travel from VC1 to VC2
     }
-    
-    @IBAction func makeChoiceHybridCodeSegue (){
-        
+    //get segue by identifier swift
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "makeChoiceHybridCodeSegue") {
+            if let destVC = segue.destinationViewController as? ResultViewController {
+                destVC.choiced = choice
+            }
+        }
     }
+    
+    @IBAction func makeChoiceHybridCodeSegue(){
+        
+        performSegueWithIdentifier("makeChoiceHybridCodeSegue", sender: self)
+    }
+    
 }
 
