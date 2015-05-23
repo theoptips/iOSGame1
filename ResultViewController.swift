@@ -10,16 +10,18 @@ import Foundation
 import UIKit
 
 class ResultViewController: UIViewController {
-    var choiced : String? // what the user chose
+    var choiced : String? // what the user chose passed from 1st VC
     // generate a random number 1 rock, 2 paper, 3 scissors
-    var AIChoice : String?
-    @IBOutlet var resultText: UILabel!
-    @IBOutlet var resultImage:UIImageView!
+    var AIChoice : String? //stores the AI randomized answer
+    @IBOutlet var resultText: UILabel! //instantiate a label
+    @IBOutlet var resultImage:UIImageView! //instantiate a picture
     
     override func viewWillAppear(animated: Bool) {
+        //preparing the view
         println("in viewWillAppear")
         println(choiced!)
         
+        //generate a random number and output a String
         func randomVal(){
             var choices: [String] = ["Paper", "Rock", "Scissors"]
             let randomVal = 1 + arc4random() % 3
@@ -27,11 +29,14 @@ class ResultViewController: UIViewController {
             AIChoice = choices[randomVal-1]
         }
         
+        //call randomized function
         randomVal()
         
+        //unwrap optionals and determine results
         if let humanChoice = self.choiced {
             if humanChoice == AIChoice {
                 println("It is a draw!")
+                //set images by name
                 self.resultImage.image = UIImage(named: "ResultTie")
                 resultText.text = "Tie it is"
             } else if humanChoice == "Paper" && AIChoice == "Rock" {
@@ -54,12 +59,14 @@ class ResultViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        //animate
         UIView.animateWithDuration(0.3) {
             self.resultImage.alpha = 1
         }
     }
     
     //dismiss button
+    //dismiss current view from the stack
     @IBAction func cancelButton() {
         println("cancelButton")
         self.dismissViewControllerAnimated(true, completion: nil)

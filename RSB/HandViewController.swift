@@ -9,40 +9,47 @@
 import UIKit
 
 class HandViewController: UIViewController {
-    var choice: String?
+    var choice: String? // optional
     
     func choosePaper(){
         println("paper")
         choice = "Paper"
     }
     @IBAction func chooseRock(){
-        println("rock")
-        choice = "Rock"
-        makeChoice()
+        //code only transition from VC to VC
+        println("rock") //debug
+        choice = "Rock" //set the choice
+        makeChoice() //call makeChoice which is the manual code part - presentViewController-
         
     }
     func chooseScissors(){
         println("scissors")
         choice = "Scissors"
     }
-    func randomVal(){
-        var choices: [String] = ["Paper", "Rock", "Scissors"]
-        let randomVal = 1 + arc4random() % 3
-        println(choices[randomVal-1])
-    }
+//    func randomVal(){
+//        var choices: [String] = ["Paper", "Rock", "Scissors"]
+//        let randomVal = 1 + arc4random() % 3
+//        println(choices[randomVal-1])
+//    }
     
     @IBAction func makeChoice(){
-        var controller: ResultViewController
+        var controller: ResultViewController // make variable type  = destination VC type
         
         controller = self.storyboard?.instantiateViewControllerWithIdentifier("ResultViewController") as ResultViewController
         
-        if let test = self.choice {
-            println("In makeChoice " + test)
-        }
+        //instantiate the variable, asking is the destination VC exists on storyboard, requires a storyboard ID to connect
         
-        controller.choiced = self.choice
+//        if let test = self.choice {
+//            println("In makeChoice " + test) //debug
+//        }
+//        
+        controller.choiced = self.choice //pass data from current VC to the next
         
-        presentViewController(controller, animated: true, completion: nil)
+        presentViewController(controller, animated: true, completion: nil) //presentViewController key way to travel from VC1 to VC2
+    }
+    
+    @IBAction func makeChoiceHybridCodeSegue (){
+        
     }
 }
 
