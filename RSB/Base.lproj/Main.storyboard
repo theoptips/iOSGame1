@@ -42,6 +42,9 @@
                                 <state key="normal" image="Scissors">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="NUD-8E-gzP" kind="presentation" identifier="makeChoiceStoryboard" id="c9T-ZB-upZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2O-BU-aha">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -208,4 +211,7 @@
         <image name="Rock" width="37" height="32"/>
         <image name="Scissors" width="37" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="c9T-ZB-upZ"/>
+    </inferredMetricsTieBreakers>
 </document>

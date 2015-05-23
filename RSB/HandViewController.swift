@@ -11,7 +11,6 @@ import UIKit
 class HandViewController: UIViewController {
     var choice: String? // optional
 
-    
     @IBAction func choosePaper(){
         println("paper")
         choice = "Paper"
@@ -24,6 +23,7 @@ class HandViewController: UIViewController {
         makeChoice() //call makeChoice which is the manual code part - presentViewController-
         
     }
+    
     func chooseScissors(){
         println("scissors")
         choice = "Scissors"
@@ -50,9 +50,16 @@ class HandViewController: UIViewController {
         presentViewController(controller, animated: true, completion: nil) //presentViewController key way to travel from VC1 to VC2
     }
     //get segue by identifier swift
-
+    //pass data from 1st VC to 2nd VC
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "makeChoiceHybridCodeSegue") {
+            if let destVC = segue.destinationViewController as? ResultViewController {
+                destVC.choiced = choice
+            }
+        }
+        
+        if (segue.identifier == "makeChoiceStoryboard"){
+            chooseScissors() //set choice = paper
             if let destVC = segue.destinationViewController as? ResultViewController {
                 destVC.choiced = choice
             }
@@ -60,9 +67,10 @@ class HandViewController: UIViewController {
     }
     
     @IBAction func makeChoiceHybridCodeSegue(){
-        
+        // choosePaper hybrid code + storyboard segue
         performSegueWithIdentifier("makeChoiceHybridCodeSegue", sender: self)
     }
+
     
 }
 

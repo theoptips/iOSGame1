@@ -52,6 +52,12 @@ class ResultViewController: UIViewController {
             } else if humanChoice == "Rock" && AIChoice == "Scissors"{
                 self.resultImage.image = UIImage(named: "ResultScissorsRock")
                 resultText.text = "Rock bends scissors oh yeah you win!"
+            } else if humanChoice == "Scissors" && AIChoice == "Rock" {
+                self.resultImage.image = UIImage(named: "ResultScissorsRock")
+                resultText.text = "Rock just didn't fly with scissors oh yeah you lost!"
+            } else if humanChoice == "Scissors" && AIChoice == "Paper"{
+                self.resultImage.image = UIImage(named: "ResultPaperRock")
+                resultText.text = "Cutting right through paper, you won!"
             }
         } else{
             self.resultImage.image = nil
